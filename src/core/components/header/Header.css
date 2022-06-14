@@ -1,0 +1,10 @@
+.Header-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header-nav-item {
+  padding: 0 20px;
+}
