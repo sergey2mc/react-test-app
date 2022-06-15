@@ -11,7 +11,9 @@ export function Todo() {
 
   return (
     <section>
-      <h1 className="Todo-title">{todo?.text}</h1>
+      <div className="container">
+        <h1 className="Todo-title">{todo?.text}</h1>
+      </div>
     </section>
   );
 }

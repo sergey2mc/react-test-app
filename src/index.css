@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  min-height: 100vh;
 }
 
 code {
@@ -16,4 +18,25 @@ ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.container {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
 }

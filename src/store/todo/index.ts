@@ -1,3 +1,3 @@
 export { reducer as todoReducer } from './todo.reducer';
-export { toggleTodoEditMode } from './todo.actions';
-export { getEditingTodoId } from './todo.selectors';
+export { setActiveTodoId } from './todo.actions';
+export { getActiveTodoId } from './todo.selectors';

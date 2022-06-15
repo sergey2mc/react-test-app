@@ -1,3 +1,3 @@
 import { RootState } from '../index';
 
-export const getEditingTodoId = (state: RootState) => state.todo.editingTodoId;
+export const getActiveTodoId = (state: RootState) => state.todo.activeTodoId;

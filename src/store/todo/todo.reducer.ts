@@ -1,17 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { toggleTodoEditMode } from './todo.actions';
+import { setActiveTodoId } from './todo.actions';
 
 interface State {
-  editingTodoId: string;
+  activeTodoId: string | null;
 }
 
 export const initialState: State = {
-  editingTodoId: '',
+  activeTodoId: null,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
-  builder.addCase(toggleTodoEditMode, (state: State, { payload }) => {
-    state.editingTodoId = payload;
-  });
+  builder
+    .addCase(setActiveTodoId, (state: State, { payload }) => {
+      state.activeTodoId = payload;
+    });
 });
