@@ -1,7 +1,7 @@
 import { Home } from '../../home/Home';
 import { About } from '../../about/About';
-import { Universities } from '../../universities/Universities';
-import { University } from '../../universities/university/University';
+import { Todos } from '../../todos/Todos';
+import { Todo } from '../../todos/todo/Todo';
 
 export const ROUTES = [
   {
@@ -15,14 +15,14 @@ export const ROUTES = [
     component: <About />,
   },
   {
-    title: 'Universities',
-    path: '/universities',
-    component: <Universities />,
+    title: 'Todos',
+    path: '/todos',
+    component: <Todos />,
   },
   {
-    title: 'University',
-    path: '/universities/:name',
-    component: <University />,
+    title: 'Todo',
+    path: '/todos/:_id',
+    component: <Todo />,
     hideInNav: true,
   }
 ];
