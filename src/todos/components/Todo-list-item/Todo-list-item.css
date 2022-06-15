@@ -1,0 +1,36 @@
+.Todo-link {
+  display: block;
+  width: 100%;
+}
+
+.Todo-link-button {
+  padding: 10px 0 10px 10px !important;
+}
+
+.Todo-list-item {
+  flex: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 52px;
+  padding-right: 10px;
+}
+
+.Todo-form {
+  flex: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 10px;
+}
+
+.Todo-actions {
+  display: flex;
+  align-items: center;
+}
+
+.Todo-actions button {
+  margin-left: 10px;
+}

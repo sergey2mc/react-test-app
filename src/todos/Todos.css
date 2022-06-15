@@ -7,43 +7,8 @@
   color: green;
 }
 
-.Todo-link {
-  display: block;
-  width: 100%;
-}
-
-.Todo-link-button {
-  padding: 0 !important;
-}
-
-.Todo-list-item {
-  flex: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  min-height: 48px;
-  padding: 10px;
-}
-
-.Todo-form {
-  flex: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .Todo-add-button {
   position: absolute !important;
-  bottom: 10px;
-  right: 10px;
-}
-
-.Todo-actions {
-  display: flex;
-  align-items: center;
-}
-
-.Todo-actions button {
-  margin-left: 10px;
+  bottom: 16px;
+  right: 16px;
 }
