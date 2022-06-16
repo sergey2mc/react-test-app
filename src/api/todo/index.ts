@@ -2,12 +2,14 @@ import { Draft } from '@reduxjs/toolkit';
 
 import { Todo } from '../../core/models';
 import { HTTP, rootApi } from '../index';
+import { reorderListMutating, sortByOrder } from '../../shared/utils';
 
 export const todoApi = rootApi.injectEndpoints({
   endpoints: (builder) => {
     return ({
       getTodos: builder.query<Todo[], void>({
         query: () => '/todos',
+        transformResponse: (response: Todo[]) => sortByOrder<Todo>(response),
         providesTags: ['Todos'],
       }),
 
@@ -62,6 +64,31 @@ export const todoApi = rootApi.injectEndpoints({
         invalidatesTags: ['Todo'],
       }),
 
+      updateTodoOrder: builder.mutation<Todo, Partial<Todo>>({
+        query: ({ _id, order }: Partial<Todo>) => ({
+          url: `/todos/${_id}`,
+          method: HTTP.PUT,
+          body: { order },
+        }),
+        async onQueryStarted({ _id, order }, {queryFulfilled, dispatch}) {
+          // Optimistic update front-end values without backend data re-fetching
+          const patchResult = dispatch(
+            todoApi.util.updateQueryData('getTodos', undefined, (draftTodos: Todo[]) => {
+              const prevOrder = draftTodos.find(todo => todo._id === _id)?.order;
+              reorderListMutating<Todo>(draftTodos, prevOrder as number, order as number);
+            })
+          );
+
+          try {
+            await queryFulfilled;
+          } catch (err) {
+            console.log(err);
+            patchResult.undo();
+          }
+        },
+        invalidatesTags: ['Todo'],
+      }),
+
       deleteTodo: builder.mutation<void, string>({
         query: (id: string) => ({
           url: `/todos/${id}`,
@@ -88,5 +115,6 @@ export const {
   useGetTodoQuery,
   useCreateTodoMutation,
   useUpdateTodoMutation,
+  useUpdateTodoOrderMutation,
   useDeleteTodoMutation,
 } = todoApi as any;
