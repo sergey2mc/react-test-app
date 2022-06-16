@@ -5,22 +5,22 @@ import { Todo } from '../../todos/todo/Todo';
 
 export const ROUTES = [
   {
-    title: 'Home',
+    title: 'PAGES.HOME',
     path: '/',
     component: <Home />,
   },
   {
-    title: 'About',
+    title: 'PAGES.ABOUT',
     path: '/about',
     component: <About />,
   },
   {
-    title: 'Todos',
+    title: 'PAGES.TODOS',
     path: '/todos',
     component: <Todos />,
   },
   {
-    title: 'Todo',
+    title: 'PAGES.TODO',
     path: '/todos/:_id',
     component: <Todo />,
     hideInNav: true,

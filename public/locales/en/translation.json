@@ -1,0 +1,14 @@
+{
+  "PAGES": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "TODOS": "Todos",
+    "TODO": "Todo"
+  },
+  "TOOLTIPS": {
+    "ADD_TODO": "Add todo",
+    "EDIT_TODO": "Edit todo",
+    "SAVE_TODO": "Save todo",
+    "DELETE_TODO": "Delete todo"
+  }
+}

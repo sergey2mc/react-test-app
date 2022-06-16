@@ -1,5 +1,3 @@
-import { Draft } from '@reduxjs/toolkit';
-
 import { Todo } from '../../core/models';
 import { HTTP, rootApi } from '../index';
 import { reorderListMutating, sortByOrder } from '../../shared/utils';

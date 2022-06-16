@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FieldValues, UnpackNestedValue, useForm } from 'react-hook-form';
 import { Draggable } from 'react-beautiful-dnd';
+import { useTranslation } from 'react-i18next';
 
 import pink from '@mui/material/colors/pink';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import EditIcon from '@mui/icons-material/Edit';
@@ -20,6 +22,7 @@ import { getActiveTodoId, setActiveTodoId } from '../../../store/todo';
 import './Todo-list-item.css';
 
 export function TodoListItem({ todo, index }: { todo: Todo; index: number }) {
+  const [t] = useTranslation();
   const dispatch = useAppDispatch();
   const activeTodoId = useAppSelector(getActiveTodoId);
   const [createTodo, { isSuccess: createSuccess }] = useCreateTodoMutation();
@@ -34,7 +37,7 @@ export function TodoListItem({ todo, index }: { todo: Todo; index: number }) {
         setActiveTodoId(null)
       );
     }
-  }, [createSuccess, updateSuccess]);
+  }, [dispatch, createSuccess, updateSuccess]);
 
   const onAddActiveTodo = (id?: string) => {
     dispatch(
@@ -75,9 +78,11 @@ export function TodoListItem({ todo, index }: { todo: Todo; index: number }) {
                   />
 
                   <div className="Todo-actions">
-                    <IconButton aria-label="save" type="submit">
-                      <CheckIcon color="success" />
-                    </IconButton>
+                    <Tooltip title={t("TOOLTIPS.SAVE_TODO")}>
+                      <IconButton aria-label="save" type="submit">
+                        <CheckIcon color="success" />
+                      </IconButton>
+                    </Tooltip>
                   </div>
                 </form>
                 : <>
@@ -88,12 +93,17 @@ export function TodoListItem({ todo, index }: { todo: Todo; index: number }) {
                   </Link>
 
                   <div className="Todo-actions">
-                    <IconButton aria-label="edit" onClick={() => onAddActiveTodo(todo._id)}>
-                      <EditIcon color="secondary" />
-                    </IconButton>
-                    <IconButton aria-label="delete" onClick={() => onDeleteTodo(todo._id)}>
-                      <DeleteIcon sx={{ color: pink[500] }} />
-                    </IconButton>
+                    <Tooltip title={t("TOOLTIPS.EDIT_TODO")}>
+                      <IconButton aria-label="edit" onClick={() => onAddActiveTodo(todo._id)}>
+                        <EditIcon color="secondary" />
+                      </IconButton>
+                    </Tooltip>
+
+                    <Tooltip title={t("TOOLTIPS.DELETE_TODO")}>
+                      <IconButton aria-label="delete" onClick={() => onDeleteTodo(todo._id)}>
+                        <DeleteIcon sx={{ color: pink[500] }} />
+                      </IconButton>
+                    </Tooltip>
                   </div>
                 </>
             }
